@@ -64,6 +64,7 @@ table {
 
 .site-header {
   background-color: $background-color;
+  border-color: $transparent;
 }
 
 .site-sidebar {
@@ -150,7 +151,7 @@ ul.post-tags {
 
 .site-footer {
   color: $text-color-light;
-  border-top-color: $border-color-light;
+  border-top-color: rgba(0, 0, 0, 0);
 }
 
 .sidebar-section {

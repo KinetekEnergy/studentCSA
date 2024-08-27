@@ -16,6 +16,8 @@
   min-height: $base-font-size * 3;
   line-height: $base-font-size * 3;
 
+  border-color: $transparent;
+
   @include media-query($on-small) {
     display: flex;
   }
