@@ -39,7 +39,7 @@ layout: page
   <ul class="post-list">
     {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
     {%- for post in posts -%}
-    <li class="glow-on-hover">
+    <li class="glow-on-hover" style="padding-top: 0px; padding-bottom: 0px; margin-top: 25px; margin-bottom: 25px;">
       <!-- This file can be found in _includes -->
       {%- include post_list_image_card.html -%}
     </li>
