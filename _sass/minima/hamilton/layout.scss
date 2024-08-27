@@ -13,8 +13,6 @@
  * Site header
  */
 .site-header {
-  border-top: 5px solid;
-  border-bottom: 1px solid;
   min-height: $base-font-size * 3;
   line-height: $base-font-size * 3;
 
@@ -643,7 +641,6 @@ figcaption.align-center {
  */
 .site-footer {
   margin-top: $spacing-unit * 2;
-  border-top: 1px solid;
   padding: $spacing-unit 0;
   @include relative-font-size(0.8);
 
