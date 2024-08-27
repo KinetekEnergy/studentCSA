@@ -1,6 +1,9 @@
 /**
  * Site container
  */
+
+$transparent: rgba(0, 0, 0, 0);
+
 .site-container {
   height: 100vh;
   width: 100vw;
@@ -15,8 +18,10 @@
 .site-header {
   min-height: $base-font-size * 3;
   line-height: $base-font-size * 3;
+  backdrop-filter: blur(5px);
+  position: sticky;
 
-  border-color: $transparent;
+  border-color: $transparent !important;
 
   @include media-query($on-small) {
     display: flex;
@@ -362,8 +367,6 @@ ul.social-icons {
   li {
     padding-top: $spacing-unit / 2;
     padding-bottom: $spacing-unit / 2;
-    border-bottom: 1px solid;
-    margin-bottom: $spacing-unit;
 
     h2 {
       margin-bottom: 0;
@@ -416,7 +419,6 @@ ul.social-icons {
 .post-header {
   padding-top: $spacing-unit * 2;
   padding-bottom: $spacing-unit;
-  border-bottom: 1px solid;
   margin-bottom: $spacing-unit * 2;
   text-align: center;
 }

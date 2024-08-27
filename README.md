@@ -1,3 +1,19 @@
+# Debug
+In `_sass/minima/hamilton/base.scss`:
+```
+/**
+ * Reset some basic elements
+ */
+body, h1, h2, h3, h4, h5, h6,
+p, blockquote, pre, hr,
+dl, dd, ol, ul, figure {
+  margin: 0;
+  padding: 0;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+  list-style: none; // change if lists broken
+}
+```
+
 # Introduction
 
 Nighthawk Pages is a project designed to support students in their Computer Science and Software Engineering education. It offers a wide range of resources including tech talks, code examples, and educational blogs.

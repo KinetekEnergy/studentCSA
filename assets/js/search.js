@@ -190,6 +190,8 @@ function initSearch() {
   
             var resultsListItem = document.createElement('li');
             resultsListItem.classList.add('search-results-list-item');
+            resultsListItem.classList.add('glow-on-hover-search');
+            resultsListItem.classList.add('no-bullet');
             resultsList.appendChild(resultsListItem);
   
             var resultLink = document.createElement('a');

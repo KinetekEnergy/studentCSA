@@ -15,10 +15,10 @@
     {% for category in categories %}
     <li>
       <!-- Box shadow and rounded corners, using Primer CSS classes https://github.com/primer/css -->
-      <div class="Box box-shadow-medium rounded-1 col-12">
+      <div class="Box box-shadow-medium rounded-1 col-12 glow-on-hover-search">
         <div class="col-8 d-table-cell p-3">
 
-          <h3><a href="#{{ category }}">{{ category }}</a></h3>
+          <h3 style="margin-top: 0px;"><a href="#{{ category }}">{{ category }}</a></h3>
           {% for post in site.categories[category] %}
           {% if post.hide != true %}
           {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
