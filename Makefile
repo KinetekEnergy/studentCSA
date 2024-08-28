@@ -14,7 +14,7 @@ NOTEBOOK_FILES := $(shell find _notebooks -name '*.ipynb')
 
 # Specify the target directory for the converted Markdown files
 DESTINATION_DIRECTORY = _posts
-MARKDOWN_FILES := $(patsubst _notebooks/%.ipynb,$(DESTINATION_DIRECTORY)/%_IPYNB_2_.md,$(NOTEBOOK_FILES))
+MARKDOWN_FILES := $(patsubst _notebooks/%.ipynb,$(DESTINATION_DIRECTORY)/%.md,$(NOTEBOOK_FILES))
 
 # Call server, then verify and start logging
 # ...
@@ -64,7 +64,7 @@ server: stop convert
 convert: $(MARKDOWN_FILES)
 
 # Convert .ipynb files to Markdown with front matter, preserving directory structure
-$(DESTINATION_DIRECTORY)/%_IPYNB_2_.md: _notebooks/%.ipynb
+$(DESTINATION_DIRECTORY)/%.md: _notebooks/%.ipynb
 	@echo "Converting source $< to destination $@"
 	@mkdir -p $(@D)
 	@python3 -c 'import sys; from scripts.convert_notebooks import convert_single_notebook; convert_single_notebook(sys.argv[1])' "$<"
@@ -72,7 +72,7 @@ $(DESTINATION_DIRECTORY)/%_IPYNB_2_.md: _notebooks/%.ipynb
 # Clean up project derived files, to avoid run issues stop is dependency
 clean: stop
 	@echo "Cleaning converted IPYNB files..."
-	@find _posts -type f -name '*_IPYNB_2_.md' -exec rm {} +
+	@find _posts -type f -name '*.md' -exec rm {} +
 	@echo "Cleaning Github Issue files..."
 	@find _posts -type f -name '*_GithubIssue_.md' -exec rm {} +
 	@echo "Removing empty directories in _posts..."

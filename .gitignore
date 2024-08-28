@@ -1,7 +1,8 @@
 _site
 *.pyc
 __pycache__/
-_posts/**/*_IPYNB_2_.md
+_posts/**/*.md
+_posts/**/*.md
 _posts/**/*_GithubIssue_.md
 _posts/**/*_GithubIssue.md
 _posts/**/*_GithubPR.md

@@ -14,7 +14,7 @@ destination_directory = "_posts"
 
 def error_cleanup(notebook_file):
     # Remove the destination file if it exists
-    destination_file = os.path.basename(notebook_file).replace(".ipynb", "_IPYNB_2_.md")
+    destination_file = os.path.basename(notebook_file).replace(".ipynb", ".md")
     destination_path = os.path.join(destination_directory, destination_file)
     if os.path.exists(destination_path):
         os.remove(destination_path)
@@ -38,7 +38,7 @@ def get_relative_output_path(notebook_file):
     # Calculate the relative path of the notebook file
     relative_path = os.path.relpath(notebook_file, notebook_directory)
     # Replace the file extension and prepend the subdirectory structure
-    markdown_filename = relative_path.replace(".ipynb", "_IPYNB_2_.md")
+    markdown_filename = relative_path.replace(".ipynb", ".md")
     # Construct the full path for the output file
     destination_path = os.path.join(destination_directory, markdown_filename)
     return destination_path
@@ -68,7 +68,7 @@ def convert_notebook_to_markdown_with_front_matter(notebook_file):
         markdown_with_front_matter = front_matter_content + markdown
         
         # Generate the destination Markdown file name by replacing the extension
-        destination_file = os.path.basename(notebook_file).replace(".ipynb", "_IPYNB_2_.md")
+        destination_file = os.path.basename(notebook_file).replace(".ipynb", ".md")
 
         # Generate the destination path including subdirectories
         destination_path = get_relative_output_path(notebook_file)
