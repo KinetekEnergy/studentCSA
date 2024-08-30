@@ -16,9 +16,17 @@ My interests include:
 - Cybersecurity
 - Piano
 - Photography
+  - [My Website](https://www.pixelpotpourri.com/)
 - Surfing
+  - [Torrey Pines Forecast](https://www.surfline.com/surf-report/torrey-pines-state-beach/584204204e65fad6a7709994?camId=5fc81527bceda049ecf8ac63)
+  - [Torrey Pines Forecast Alternative](https://www.surf-forecast.com/breaks/Torrey-Pines-State-Beach/forecasts/latest#)
+  - [Beaufort Wind Scale](https://www.spc.noaa.gov/faq/tornado/beaufort.html)
+  - [Forecast Guide](https://www.lapointcamps.com/blog/how-to-read-surf-forecast/)
 - Snowboarding
 
+ <img src="https://github.com/user-attachments/assets/27502a63-0d74-4c24-b42f-d2ad0eca57be" alt="Italian Trulli">
+
+https://github.com/user-attachments/assets/27502a63-0d74-4c24-b42f-d2ad0eca57be
 ## My Blog
 
 **What is this blog?** This blog is for APCSP and contains various projects, lessons, etc. It serves as a documentation or logbook / journal of what I've done so far and my progress.
