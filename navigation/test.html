@@ -1,92 +1,119 @@
 <style>
-    .wrapper {
-        height: 130px;
+    .slider {
+        box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.125);
+        height: 200px;
+        margin: auto;
         overflow: hidden;
         position: relative;
-        width: 100%;
-        display: flex;
-        align-items: center;
-        padding: 0 20px;
+        border-radius: 5px;
     }
 
-    .wrapper:before,
-    .wrapper:after {
+    .slider::before,
+    .slider::after {
+        background: linear-gradient(to right, #121212 0%, rgba(255, 255, 255, 0) 100%);
         content: "";
+        height: 200px;
         position: absolute;
-        height: 130px;
-        width: 150px;
+        width: 200px;
         z-index: 2;
     }
 
-    .wrapper:after {
+    .slider::after {
         right: 0;
         top: 0;
         transform: rotateZ(180deg);
     }
 
-    .wrapper:before {
+    .slider::before {
         left: 0;
         top: 0;
     }
 
-    .wrapper .track {
+    .slider .slide-track {
         display: flex;
-        width: calc(100px * 10);
-        animation: scroll 15s 0.5s linear infinite;
+        animation: scroll 40s linear infinite;
     }
 
-    .wrapper .logo {
-        width: 150px;
+    .slider .slide {
+        flex: 0 0 auto;
+        width: auto;
+        height: 200px;
+        padding-left: 10px;
+        padding-right: 10px;
     }
 
-    .wrapper .logo img {
-        height: 90px;
+    .slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 5px;
     }
 
     @keyframes scroll {
-        from {
+        0% {
             transform: translateX(0);
         }
 
-        to {
-            transform: translateX(calc(-150px * 5));
+        100% {
+            transform: translateX(calc(-250px * 28));
         }
     }
 </style>
 
-<body>
-    <div class="wrapper">
-        <div class="track">
-            <div class="logo">
-                <img src="https://photos.smugmug.com/Galleries/Landscapes/i-p26KJZc/1/KqSrTP9Khxqf4DnP5qJsPQgpkzBxHvWMNN79rQ3Bv/L/-%20_DSC4389%20-%20Web-L.jpg" />
-            </div>
-            <div class="logo">
-                <img src="https://photos.smugmug.com/Galleries/Landscapes/i-p26KJZc/1/KqSrTP9Khxqf4DnP5qJsPQgpkzBxHvWMNN79rQ3Bv/L/-%20_DSC4389%20-%20Web-L.jpg" />
-            </div>
-            <div class="logo">
-                <img src="https://photos.smugmug.com/Galleries/Landscapes/i-p26KJZc/1/KqSrTP9Khxqf4DnP5qJsPQgpkzBxHvWMNN79rQ3Bv/L/-%20_DSC4389%20-%20Web-L.jpg" />
-            </div>
-            <div class="logo">
-                <img src="https://photos.smugmug.com/Galleries/Landscapes/i-p26KJZc/1/KqSrTP9Khxqf4DnP5qJsPQgpkzBxHvWMNN79rQ3Bv/L/-%20_DSC4389%20-%20Web-L.jpg" />
-            </div>
-            <div class="logo">
-                <img src="https://photos.smugmug.com/Galleries/Landscapes/i-p26KJZc/1/KqSrTP9Khxqf4DnP5qJsPQgpkzBxHvWMNN79rQ3Bv/L/-%20_DSC4389%20-%20Web-L.jpg" />
-            </div>
-            <div class="logo">
-                <img src="https://photos.smugmug.com/Galleries/Landscapes/i-p26KJZc/1/KqSrTP9Khxqf4DnP5qJsPQgpkzBxHvWMNN79rQ3Bv/L/-%20_DSC4389%20-%20Web-L.jpg" />
-            </div>
-            <div class="logo">
-                <img src="https://photos.smugmug.com/Galleries/Landscapes/i-p26KJZc/1/KqSrTP9Khxqf4DnP5qJsPQgpkzBxHvWMNN79rQ3Bv/L/-%20_DSC4389%20-%20Web-L.jpg" />
-            </div>
-            <div class="logo">
-                <img src="https://photos.smugmug.com/Galleries/Landscapes/i-p26KJZc/1/KqSrTP9Khxqf4DnP5qJsPQgpkzBxHvWMNN79rQ3Bv/L/-%20_DSC4389%20-%20Web-L.jpg" />
-            </div>
-            <div class="logo">
-                <img src="https://photos.smugmug.com/Galleries/Landscapes/i-p26KJZc/1/KqSrTP9Khxqf4DnP5qJsPQgpkzBxHvWMNN79rQ3Bv/L/-%20_DSC4389%20-%20Web-L.jpg" />
-            </div>
-            <div class="logo">
-                <img src="https://photos.smugmug.com/Galleries/Landscapes/i-p26KJZc/1/KqSrTP9Khxqf4DnP5qJsPQgpkzBxHvWMNN79rQ3Bv/L/-%20_DSC4389%20-%20Web-L.jpg" />
-            </div>
-        </div>
+<div class="slider">
+    <div class="slide-track" id="slide-track">
+        <!-- Images will be appended here via JavaScript -->
     </div>
-</body>
+</div>
+
+
+<script>
+    // Array of image URLs
+    const images = [
+        "https://photos.smugmug.com/Galleries/Other/i-mF7B22J/1/MzFhLkJCWFPGR2Cs5zNNNHPqXxTfn2xnq8twscd5J/X4/-%20_DSC4571%20-%20Web-L.jpg",
+        "https://photos.smugmug.com/Galleries/Other/i-vfnH97m/1/MSx2hTCjtc6GgVd9ZKNP83jfvqVdP6zSkdmgb3B5p/X4/-%20_DSC4570%20-%20Web-X4.jpg",
+        "https://photos.smugmug.com/Galleries/Abstract/i-t4JLKM6/1/LD2nhjfFGhnFmBHrzcqmsS3VWWkbhNbCQFv8FRM6k/X4/-%20_DSC5690%20-%20Web-X4.jpg",
+        "https://photos.smugmug.com/Galleries/Cityscapes/i-MjpgKbX/1/KPs9Xjq3V648m6dp5WX7vLrLG8d9GdZM6wXCRLrTF/X4/-%20_DSC5521%20-%20Web-X4.jpg",
+        "https://photos.smugmug.com/Galleries/Cityscapes/i-3qRCPFq/2/KmFzdD7Fv2qzcPfPvQR4LZZ9rKdcxcQvGRpnzb4t9/5K/DSC_1237-5K.jpg",
+        "https://photos.smugmug.com/Galleries/Landscapes/i-cNg27wP/2/LghJN38B28Bqnzwtj9c6Qv9T2NRp46FHXZKQJSP52/5K/DSC_0350-5K.jpg",
+        "https://photos.smugmug.com/Galleries/Landscapes/i-vr5ZvBn/2/MCW44gbttN7z3pfBBWDqXvSdC99857jWzDH8ZrHFg/5K/DSC_0867-5K.jpg",
+        "https://photos.smugmug.com/Galleries/Landscapes/i-b8TGzNW/2/MdQ59ZvvtD2Chg8MDDGfc8kXWqGX3xSjHqkwC68HB/5K/DSC_0560-5K.jpg",
+        "https://photos.smugmug.com/Galleries/Cityscapes/i-mtSg4rR/2/L5BXvWZnHJXNkxBNm8dgmTRXDH2r5wd9JbHNmJjw5/5K/DSC_0429-5K.jpg",
+        "https://photos.smugmug.com/Galleries/Landscapes/i-Ptfv836/2/K7chxqGsC9nXsWhvM6xpP3zzBkWS66xvHWjXnkRkg/5K/DSC_0817-5K.jpg",
+        "https://photos.smugmug.com/Galleries/Landscapes/i-mRBK5wf/2/M9gkq2GjJ2CB9GtC2XRSx9NX2WcHQNqF4KJT5hqpH/5K/DSC_0823-5K.jpg",
+        "https://photos.smugmug.com/Galleries/Cityscapes/i-rqfZ9wv/2/LqMfJKM542Vp2D2dGrmPZtqJKVK9fmZKLzKrNTgTP/5K/DSC_1058-5K.jpg",
+        "https://photos.smugmug.com/Galleries/Cityscapes/i-6nvkvPM/2/LBNgs936cst5zsCZb4wBL8kR3jPcjhVRxmLNh9Pdg/5K/DSC_0322-5K.jpg",
+        "https://photos.smugmug.com/Galleries/Flora/i-PKGZ3ng/1/K7BvSHG72dHmN6542jhBhSSQd698xXwXttd95nCxV/X4/-%20_DSC5790%20-%20Web-X4.jpg",
+        // Add more URLs as needed
+    ];
+
+    // Function to create image elements
+    function createImage(src) {
+        const img = document.createElement('img');
+        img.src = src;
+        img.height = 200;
+        img.style.objectFit = 'cover';
+        img.style.borderRadius = '5px';
+        return img;
+    }
+
+    // Function to add images to the track
+    function addImages() {
+        const track = document.getElementById('slide-track');
+        images.forEach(src => {
+            const slideDiv = document.createElement('div');
+            slideDiv.className = 'slide';
+            slideDiv.appendChild(createImage(src));
+            track.appendChild(slideDiv);
+        });
+    }
+
+    // Infinite loop to keep appending images
+    function loopImages() {
+        addImages(); // First load
+        setInterval(addImages, 1); // Re-add images
+    }
+
+    // Start appending images on page load
+    window.onload = loopImages;
+</script>
