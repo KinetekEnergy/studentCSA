@@ -1,0 +1,114 @@
+<style>
+    body {
+  align-items: center;
+  background: #E3E3E3;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-250px * 7));
+  }
+}
+
+.slider {
+  background: white;
+  box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.125);
+  height: 100px;
+  margin: auto;
+  overflow: hidden;
+  position: relative;
+  width: 960px;
+}
+
+.slider::before,
+.slider::after {
+  background: linear-gradient(to right, white 0%, rgba(255, 255, 255, 0) 100%);
+  content: "";
+  height: 100px;
+  position: absolute;
+  width: 200px;
+  z-index: 2;
+}
+
+.slider::after {
+  right: 0;
+  top: 0;
+  transform: rotateZ(180deg);
+}
+
+.slider::before {
+  left: 0;
+  top: 0;
+}
+
+.slider .slide-track {
+  animation: scroll 40s linear infinite;
+  display: flex;
+  width: calc(250 * 0);
+}
+
+.slider .slide {
+  height: 100px;
+  width: 250px;
+  border-radius: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+img {
+    border-radius: 5px;
+}
+</style>
+
+<div class="slider">
+    <div class="slide-track">
+        <div class="slide">
+            <img src="https://photos.smugmug.com/Galleries/Other/i-mF7B22J/1/MzFhLkJCWFPGR2Cs5zNNNHPqXxTfn2xnq8twscd5J/X4/-%20_DSC4571%20-%20Web-L.jpg" height="100" alt="" />
+        </div>
+        <div class="slide">
+            <img src="https://photos.smugmug.com/Galleries/Other/i-vfnH97m/1/MSx2hTCjtc6GgVd9ZKNP83jfvqVdP6zSkdmgb3B5p/X4/-%20_DSC4570%20-%20Web-X4.jpg" height="100" alt="" />
+        </div>
+        <div class="slide">
+            <img src="https://photos.smugmug.com/Galleries/Abstract/i-t4JLKM6/1/LD2nhjfFGhnFmBHrzcqmsS3VWWkbhNbCQFv8FRM6k/X4/-%20_DSC5690%20-%20Web-X4.jpg" height="100" alt="" />
+        </div>
+        <div class="slide">
+            <img src="https://photos.smugmug.com/Galleries/Cityscapes/i-MjpgKbX/1/KPs9Xjq3V648m6dp5WX7vLrLG8d9GdZM6wXCRLrTF/X4/-%20_DSC5521%20-%20Web-X4.jpg" height="100" alt="" />
+        </div>
+        <div class="slide">
+            <img src="https://photos.smugmug.com/Galleries/Cityscapes/i-3qRCPFq/2/KmFzdD7Fv2qzcPfPvQR4LZZ9rKdcxcQvGRpnzb4t9/5K/DSC_1237-5K.jpg" height="100" alt="" />
+        </div>
+        <div class="slide">
+            <img src="https://photos.smugmug.com/Galleries/Landscapes/i-cNg27wP/2/LghJN38B28Bqnzwtj9c6Qv9T2NRp46FHXZKQJSP52/5K/DSC_0350-5K.jpg" height="100" alt="" />
+        </div>
+        <div class="slide">
+            <img src="https://photos.smugmug.com/Galleries/Landscapes/i-vr5ZvBn/2/MCW44gbttN7z3pfBBWDqXvSdC99857jWzDH8ZrHFg/5K/DSC_0867-5K.jpg" height="100" alt="" />
+        </div>
+        <div class="slide">
+            <img src="https://photos.smugmug.com/Galleries/Landscapes/i-b8TGzNW/2/MdQ59ZvvtD2Chg8MDDGfc8kXWqGX3xSjHqkwC68HB/5K/DSC_0560-5K.jpg" height="100" alt="" />
+        </div>
+        <div class="slide">
+            <img src="https://photos.smugmug.com/Galleries/Cityscapes/i-mtSg4rR/2/L5BXvWZnHJXNkxBNm8dgmTRXDH2r5wd9JbHNmJjw5/5K/DSC_0429-5K.jpg" height="100" alt="" />
+        </div>
+        <div class="slide">
+            <img src="https://photos.smugmug.com/Galleries/Landscapes/i-Ptfv836/2/K7chxqGsC9nXsWhvM6xpP3zzBkWS66xvHWjXnkRkg/5K/DSC_0817-5K.jpg" height="100" alt="" />
+        </div>
+        <div class="slide">
+            <img src="https://photos.smugmug.com/Galleries/Landscapes/i-mRBK5wf/2/M9gkq2GjJ2CB9GtC2XRSx9NX2WcHQNqF4KJT5hqpH/5K/DSC_0823-5K.jpg" height="100" alt="" />
+        </div>
+        <div class="slide">
+            <img src="https://photos.smugmug.com/Galleries/Cityscapes/i-rqfZ9wv/2/LqMfJKM542Vp2D2dGrmPZtqJKVK9fmZKLzKrNTgTP/5K/DSC_1058-5K.jpg" height="100" alt="" />
+        </div>
+        <div class="slide">
+            <img src="https://photos.smugmug.com/Galleries/Cityscapes/i-6nvkvPM/2/LBNgs936cst5zsCZb4wBL8kR3jPcjhVRxmLNh9Pdg/5K/DSC_0322-5K.jpg" height="100" alt="" />
+        </div>
+        <div class="slide">
+            <img src="https://photos.smugmug.com/Galleries/Flora/i-PKGZ3ng/1/K7BvSHG72dHmN6542jhBhSSQd698xXwXttd95nCxV/X4/-%20_DSC5790%20-%20Web-X4.jpg" height="100" alt="" />
+        </div>
+    </div>
+</div>
