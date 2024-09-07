@@ -4,47 +4,30 @@ title: About
 permalink: /about/
 ---
 
-## Me
-
-My name is Aashray Reddy, a 16 year old highschool student attending Del Norte Highschool.
-
-My interests include:
-
-- Computers
-- Programming
-  - Python, C, Arduino, hardware design and electrical engineering
-- Cybersecurity
-- Piano
-- Photography
-  - [My Website](https://www.pixelpotpourri.com/)
-- Surfing
-  - [Torrey Pines Forecast](https://www.surfline.com/surf-report/torrey-pines-state-beach/584204204e65fad6a7709994?camId=5fc81527bceda049ecf8ac63)
-  - [Torrey Pines Forecast Alternative](https://www.surf-forecast.com/breaks/Torrey-Pines-State-Beach/forecasts/latest#)
-  - [Beaufort Wind Scale](https://www.spc.noaa.gov/faq/tornado/beaufort.html)
-  - [Forecast Guide](https://www.lapointcamps.com/blog/how-to-read-surf-forecast/)
-- Snowboarding
-
-<img src="https://github.com/user-attachments/assets/27502a63-0d74-4c24-b42f-d2ad0eca57be" alt="Italian Trulli">
-
-<!--  -->
+## Places I've Lived
 
 <style>
     .grid-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-      gap: 10px;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 10px;
     }
+
     .grid-item {
-      text-align: center;
-      border-radius: 5px;
+        text-align: center;
+        border-radius: 5px;
     }
+
     .grid-item img {
-      width: 100%;
-      object-fit: contain;
-      border-radius: 5px !important;
+        width: 100%;
+        object-fit: contain;
+        border-radius: 5px !important;
     }
+
     .grid-item p {
         margin: 5px 0;
+        white-space: pre-line;
+        /* Ensures line breaks are respected */
     }
 </style>
 
@@ -52,21 +35,32 @@ My interests include:
 
 <script>
     var container = document.getElementById("grid_container");
-
     var http_source = "https://upload.wikimedia.org/wikipedia/commons/";
 
-    // Add your move date and birth date here
-    var birthDate = new Date("2008-01-17");  // Replace with your actual birth date
-    var moveToCaliforniaDate = new Date("2010-01-01");  // Replace with your actual move date to California
+    // Date variables
+    var birthDate = new Date("2008-01-17");
+    var moveToIndianaDate = new Date("2010-01-01");
+    var moveToCaliforniaDate = new Date("2015-01-01");
 
+    // flags
     var living_in_the_world = [
-        {"flag": "0/01/Flag_of_California.svg", "greeting": "Hey!", "description": "California"},
-        {"flag": "a/ac/Flag_of_Indiana.svg", "greeting": "How doo!", "description": "Indiana (hoosier!!!)"}
+        { "flag": "0/01/Flag_of_California.svg", "greeting": "Hey!", "description": "California" },
+        { "flag": "a/ac/Flag_of_Indiana.svg", "greeting": "How doo!", "description": "Indiana" }
     ];
 
-    function calculateTimeDiff(startDate) {
-        var now = new Date();
-        var diff = now - startDate;
+    // adjusts the grammar based on date (ex: 1 month, 2 months)
+    function pluralize(value, singular, plural = null) {
+        if (value === 1) {
+            return `${value} ${singular}`;
+        } else if (value > 1 || value === 0) {
+            return `${value} ${plural || singular + 's'}`;
+        }
+        return '';
+    }
+
+    // find the time difference between two dates
+    function calculateTimeDiff(startDate, endDate) {
+        var diff = endDate - startDate;
 
         var years = Math.floor(diff / (1000 * 60 * 60 * 24 * 365.25));
         var months = Math.floor((diff % (1000 * 60 * 60 * 24 * 365.25)) / (1000 * 60 * 60 * 24 * 30.44));
@@ -75,11 +69,18 @@ My interests include:
         var minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
         var seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-        return `${years} years, ${months} months, ${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds`;
+        var timeString = `${pluralize(years, 'year')}\n${pluralize(months, 'month')}\n${pluralize(days, 'day')}`;
+
+        if (hours > 0 || minutes > 0 || seconds > 0) {
+            timeString += `\n${pluralize(hours, 'hour')}\n${pluralize(minutes, 'minute')}\n${pluralize(seconds, 'second')}`;
+        }
+
+        return timeString;
     }
 
+    // update the date items in real time
     function updateGridItems() {
-        container.innerHTML = ""; // Clear the existing content
+        container.innerHTML = ""; // clear existing content
 
         living_in_the_world.forEach((location, index) => {
             var gridItem = document.createElement("div");
@@ -97,13 +98,14 @@ My interests include:
 
             var timeLived = document.createElement("p");
 
-            // Calculate time lived based on the location
+            // calculate time lived based on the location
             if (index === 0) {  // California
-                timeLived.textContent = `Lived here for: ${calculateTimeDiff(moveToCaliforniaDate)}`;
+                timeLived.textContent = `Lived here for:\n${calculateTimeDiff(moveToCaliforniaDate, (new Date()))}`;
             } else {  // Indiana
-                timeLived.textContent = `Lived here for: ${calculateTimeDiff(birthDate)} (until you moved)`;
+                timeLived.textContent = `Lived here for:\n${calculateTimeDiff(birthDate, moveToIndianaDate)}`;
             }
 
+            // put it all together
             gridItem.appendChild(img);
             gridItem.appendChild(description);
             gridItem.appendChild(greeting);
@@ -113,159 +115,33 @@ My interests include:
         });
     }
 
-    // Initial update and set interval for real-time updates every second
+    // initial update and set interval for real-time updates every second
     updateGridItems();
     setInterval(updateGridItems, 1000);
 </script>
 
+## Me
 
-## My Blog
+My name is Aashray Reddy, a 16 year old highschool student attending Del Norte Highschool.
 
-**What is this blog?** This blog is for APCSP and contains various projects, lessons, etc. It serves as a documentation or logbook / journal of what I've done so far and my progress.
+My interests include:
 
-**Who is this blog for?** This is for anyone interested in what I've done so far in CSP (althought I assume the only ones interested are me and the teacher).
+- 💻 Computers
+  - Programming
+    - Python, C, Arduino, hardware design and electrical engineering
+  - Cybersecurity
+- 🎹 Piano
+- 🏄 Surfing
+  - [Torrey Pines Forecast](https://www.surfline.com/surf-report/torrey-pines-state-beach/584204204e65fad6a7709994?camId=5fc81527bceda049ecf8ac63)
+  - [Torrey Pines Forecast Alternative](https://www.surf-forecast.com/breaks/Torrey-Pines-State-Beach/forecasts/latest#)
+  - [Beaufort Wind Scale](https://www.spc.noaa.gov/faq/tornado/beaufort.html)
+  - [Forecast Guide](https://www.lapointcamps.com/blog/how-to-read-surf-forecast/)
+- 🏂 Snowboarding
 
-**Where is this blog?** <https://kinetekenergy.github.io/blog/>
+## 📷 [Photography](https://www.pixelpotpourri.com/)
 
-**Why is this blog?** Why not?
+content
 
-## Para español, marca dos (o leer más abajo)
+## Image Collages
 
-**Qué es este blog** Este blog is para APCSP y contene vario proyectos, leccións, etc. Este sirve a documentación o diario de lo que he hecho hasta ahora y mi desarollo.
-
-**Quién es este blog para?** Este es para cualquier persona interesada en lo que he hecho hasta ahora en CSP (pero yo asumo que las personas interesadas son mi y el profesor).
-
-**Dondé es este blog?** <https://kinetekenergy.github.io/blog/>
-
-**Por qué es este blog?** Por qué no?
-<br>
-<br>
-<br>
-<br>
-<br>
-
-## Methods of Mort (instructions written by him)
-
-## Blog site using GitHub Pages and Jekyll
->
-> This site is intended for Students.   This is to record plans, complete hacks, and do work for your learnings.
-
-- This can be customized to support computer science as you work through pathway (JavaScript, Python/Flask, Java/Spring)
-- All tangible artifact work is in a _posts or in a_notebooks.  
-- Front matter (aka meta data) in ipynb and md files is used to organize information according to week and column in running web site.
-
-## GitHub Pages
-
-All `GitHub Pages` websites are managed on GitHub infrastructure. GitHub uses `Jekyll` to tranform your content into static websites and blogs. Each time we change files in GitHub it initiates a GitHub Action that rebuilds and publishes the site with Jekyll.  
-
-- GitHub Pages is powered by: [Jekyll](https://jekyllrb.com/).
-- Publised teacher website: [nighthawkcoders.github.io/teacher](https://nighthawkcoders.github.io/teacher/)
-
-## Preparing a Preview Site
-
-In all development, it is recommended to test your code before deployment.  The GitHub Pages development process is optimized by testing your development on your local machine, prior to files on GitHub
-
-Development Cycle. For GitHub pages, the tooling described below will create a development cycle  `make-code-save-preview`.  In the development cycle, it is a requirement to preview work locally, prior to doing a VSCode `commit` to git.
-
-Deployment Cycle.  In the deplopyment cycle, `sync-github-action-review`, it is a requirement to complete the development cycle prior to doing a VSCode `sync`.  The sync triggers github repository update.  The action starts the jekyll build to publish the website.  Any step can have errors and will require you to do a review.
-
-### WSL and/or Ubuntu installation requirements
-
-- The result of these step is Ubuntu tools to run preview server.  These procedures were created using [jekyllrb.com](https://jekyllrb.com/docs/installation/ubuntu/)
-- Run scripts in scripts directory of student repo: setup_ubuntu.sh and activate.sh. Expected name of the repository to run these scripts is 'student'.
-
-### MacOs installation requirements
-
-- Ihe result of these step are MacOS tools to run preview server.  These procedures were created using [jekyllrb.com](https://jekyllrb.com/docs/installation/macos/). Run scripts in scripts directory of student repo: setup_macos.sh and activate_macos.sh. Expected name of the repository to run these scripts is 'student'.
-
-### Preview
-
-- The result of these step is server running on: <http://0.0.0.0:4100/teacher/>.  Regeneration messages will run in terminal on any save.  Press the Enter or Return key in the terminal at any time to enter commands.
-
-- Complete installation
-
-```bash
-bundle install
-```
-
-- Run Server.  This requires running terminal commands `make`, `make stop`, `make clean`, or `make convert` to manage the running server.  Logging of details will appear in terminal.   A `Makefile` has been created in project to support commands and start processes.
-
-  - Start preview server in terminal
-
-    ```bash
-    cd ~/vscode/teacher  # my project location, adapt as necessary
-    make
-    ```
-
-  - Terminal output of shows server address. Cmd or Ctl click http location to open preview server in browser. Example Server address message...
-
-    ```
-    Server address: http://0.0.0.0:4100/teacher/
-    ```
-
-  - Save on ipynb or md activiates "regeneration". Refresh browser to see updates. Example terminal message...
-
-    ```
-    Regenerating: 1 file(s) changed at 2023-07-31 06:54:32
-        _notebooks/2024-01-04-cockpit-setup.ipynb
-    ```
-
-  - Terminal message are generated from background processes.  Click return or enter to obtain prompt and use terminal as needed for other tasks.  Alway return to root of project `cd ~/vscode/teacher` for all "make" actions.
-
-  - Stop preview server, but leave constructed files in project for your review.
-
-    ```bash
-    make stop
-    ```
-
-  - Stop server and "clean" constructed files, best choice when renaming files to eliminate potential duplicates in constructed files.
-
-    ```bash
-    make clean
-    ```
-
-  - Test notebook conversions, best choice to see if IPYNB conversion is acting up.
-
-    ```bash
-    make convert
-    ```
-
-### Meta Data (Front Matter)
-
-- Meta data also known as front matter is a set of key value pairs that can provide additional information to github pages about .md and .ipynb files. This can and probably will be used in other file types (ie doc, pdf), if we added them to the system.
-
-- In the front matter you can also define things like a title and description for the page.  Additional front matter is defined to place content on "Computer Science Lab Notebook" page.  The `courses:` key will place data on a specific page with the nested `week:` placing data on a specific row on the page.  The `type:` key in front matter will place blog under the plans, hacks(ToDo), and tangibles column.
-
-- In our files the front matter is defined at the top of the page or the first markdown cell.
-
-  - First open one of the .md or .ipynb files already included in either your _posts folder or your_notebooks folder.
-
-  - In the .md file you should notice something similar to this at the top of the page. To see this in your .ipynb files you will need to double click the markdown cell at the top of the file.
-
-    ```yaml
-    ---
-    toc: true
-    comments: false
-    layout: post
-    title: Daily Plan Sample
-    description: Example Blog!!!  This shows planning and notes from hacks.
-    type: plans
-    courses: { compsci: {week: 0} }
-    ---
-    ```
-
-- Front matter will always have '---' at the top and bottom to distinguish it and each key value pair will be separated by a ':'.
-
-- Here we can modify things like the title and description.
-
-- The type value will tells us which column this is going to appear under, supported values: `plans`, `hacks`, `tangibles`.
-
-- The courses tells us which menu item it will be under, in this case the `compsci` menu, and the `week` tells it what row (week) it will appear under that menu.
-
-- In our examples,  hacks(ToDo) contains references to our IPYNB files; these are stored in GitHub under the `_notebooks` folder.   The plans and tangibles contains references to our MD files; these are stored in GitHub under the `_posts` folder.
-
-- Key files in Computer Science Lab Notebook
-  - `compsci.md` - this is the "Computer Science Lab Notebook" page and is the link `https://nighthawkcoders.github.io/student/compsci`.  It contains the Title and Number of units on the page.
-  - `_data/compsci.yml` - this contains the supporting data that helps organize the units on the page.
-  - `_layouts`\schedule.html - this contains code, in the Liquid language, that generates the HTML for all the rows and columns.
-  - fyi, the schedule.html could work for another type of page.  For instance, you could make a csa.md, _data/csa.yml, and tag files with `csa: {week: 0}` under courses.
+![alt text](https://github.com/user-attachments/assets/27502a63-0d74-4c24-b42f-d2ad0eca57be "Personal image collage")
