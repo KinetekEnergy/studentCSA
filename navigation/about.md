@@ -189,7 +189,7 @@ My interests include:
 
             // calculate time lived based on the location
             if (index === 0) {  // California
-                timeLived.textContent = `Lived here for:\n${calculateTimeDiff(moveToCaliforniaDate, (new Date()))}`;
+                timeLived.textContent = `Lived here for:\n${calculateTimeDiff(moveToCaliforniaDate, new Date();)}`;
             } else {  // Indiana
                 timeLived.textContent = `Lived here for:\n${calculateTimeDiff(birthDate, moveToIndianaDate)}`;
             }
