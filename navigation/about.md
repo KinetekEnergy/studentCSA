@@ -81,7 +81,6 @@ permalink: /about/
         0% {
             transform: translateX(0);
         }
-
         100% {
             transform: translateX(calc(-250px * 28));
         }
