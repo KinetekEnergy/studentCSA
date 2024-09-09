@@ -119,8 +119,8 @@ My interests include:
 </div>
 
 ## Image Collages
-
-![alt text](https://github.com/user-attachments/assets/27502a63-0d74-4c24-b42f-d2ad0eca57be "Personal image collage")
+![hing](../images/photography/fish.jpg)
+![Personal image collage](https://github.com/user-attachments/assets/27502a63-0d74-4c24-b42f-d2ad0eca57be)
 
 <script>
     var container = document.getElementById("grid_container");
@@ -128,7 +128,6 @@ My interests include:
 
     // Date variables
     var birthDate = new Date("2008-01-17");
-    var moveToIndianaDate = new Date("2010-01-01");
     var moveToCaliforniaDate = new Date("2015-01-01");
 
     // flags
@@ -188,10 +187,12 @@ My interests include:
             var timeLived = document.createElement("p");
 
             // calculate time lived based on the location
+            currentDate = new Date();
+            console.log(currentDate);
             if (index === 0) {  // California
-                timeLived.textContent = `Lived here for:\n${calculateTimeDiff(moveToCaliforniaDate, new Date();)}`;
+                timeLived.textContent = `Lived here for:\n${calculateTimeDiff(moveToCaliforniaDate, currentDate)}`;
             } else {  // Indiana
-                timeLived.textContent = `Lived here for:\n${calculateTimeDiff(birthDate, moveToIndianaDate)}`;
+                timeLived.textContent = `Lived here for:\n${calculateTimeDiff(birthDate, moveToCaliforniaDate)}`;
             }
 
             // put it all together
@@ -210,20 +211,20 @@ My interests include:
 
     // Array of image URLs
     const images = [
-        "https://photos.smugmug.com/Galleries/Other/i-mF7B22J/1/MzFhLkJCWFPGR2Cs5zNNNHPqXxTfn2xnq8twscd5J/X4/-%20_DSC4571%20-%20Web-L.jpg",
-        "https://photos.smugmug.com/Galleries/Other/i-vfnH97m/1/MSx2hTCjtc6GgVd9ZKNP83jfvqVdP6zSkdmgb3B5p/X4/-%20_DSC4570%20-%20Web-X4.jpg",
-        "https://photos.smugmug.com/Galleries/Abstract/i-t4JLKM6/1/LD2nhjfFGhnFmBHrzcqmsS3VWWkbhNbCQFv8FRM6k/X4/-%20_DSC5690%20-%20Web-X4.jpg",
-        "https://photos.smugmug.com/Galleries/Cityscapes/i-MjpgKbX/1/KPs9Xjq3V648m6dp5WX7vLrLG8d9GdZM6wXCRLrTF/X4/-%20_DSC5521%20-%20Web-X4.jpg",
-        "https://photos.smugmug.com/Galleries/Cityscapes/i-3qRCPFq/2/KmFzdD7Fv2qzcPfPvQR4LZZ9rKdcxcQvGRpnzb4t9/5K/DSC_1237-5K.jpg",
-        "https://photos.smugmug.com/Galleries/Landscapes/i-cNg27wP/2/LghJN38B28Bqnzwtj9c6Qv9T2NRp46FHXZKQJSP52/5K/DSC_0350-5K.jpg",
-        "https://photos.smugmug.com/Galleries/Landscapes/i-vr5ZvBn/2/MCW44gbttN7z3pfBBWDqXvSdC99857jWzDH8ZrHFg/5K/DSC_0867-5K.jpg",
-        "https://photos.smugmug.com/Galleries/Landscapes/i-b8TGzNW/2/MdQ59ZvvtD2Chg8MDDGfc8kXWqGX3xSjHqkwC68HB/5K/DSC_0560-5K.jpg",
-        "https://photos.smugmug.com/Galleries/Cityscapes/i-mtSg4rR/2/L5BXvWZnHJXNkxBNm8dgmTRXDH2r5wd9JbHNmJjw5/5K/DSC_0429-5K.jpg",
-        "https://photos.smugmug.com/Galleries/Landscapes/i-Ptfv836/2/K7chxqGsC9nXsWhvM6xpP3zzBkWS66xvHWjXnkRkg/5K/DSC_0817-5K.jpg",
-        "https://photos.smugmug.com/Galleries/Landscapes/i-mRBK5wf/2/M9gkq2GjJ2CB9GtC2XRSx9NX2WcHQNqF4KJT5hqpH/5K/DSC_0823-5K.jpg",
-        "https://photos.smugmug.com/Galleries/Cityscapes/i-rqfZ9wv/2/LqMfJKM542Vp2D2dGrmPZtqJKVK9fmZKLzKrNTgTP/5K/DSC_1058-5K.jpg",
-        "https://photos.smugmug.com/Galleries/Cityscapes/i-6nvkvPM/2/LBNgs936cst5zsCZb4wBL8kR3jPcjhVRxmLNh9Pdg/5K/DSC_0322-5K.jpg",
-        "https://photos.smugmug.com/Galleries/Flora/i-PKGZ3ng/1/K7BvSHG72dHmN6542jhBhSSQd698xXwXttd95nCxV/X4/-%20_DSC5790%20-%20Web-X4.jpg",
+        "../images/photography/car.jpg",
+        "../images/photography/wall.jpg",
+        "../images/photography/fish.jpg",
+        "../images/photography/temple.jpg",
+        "../images/photography/library.jpg",
+        "../images/photography/pier.jpg",
+        "../images/photography/mountains.jpg",
+        "../images/photography/beach.jpg",
+        "../images/photography/coronado1.jpg",
+        "../images/photography/blackandwhite.jpg",
+        "../images/photography/sunset.jpg",
+        "../images/photography/building.jpg",
+        "../images/photography/coronado2.jpg",
+        "../images/photography/lily.jpg",
         // Add more URLs as needed
     ];
 
