@@ -48,7 +48,7 @@ hide: true
             <span class="stat">Followers: <span id="followers">Loading...</span></span>
         </div>
     </div>
-    
+
     <script>
         const username = 'KinetekEnergy';
 
@@ -90,3 +90,16 @@ hide: true
         updateStats();
     </script>
 </body>
+
+<script src="scripts/three.min.js"></script>
+<script src="scripts/vanta.clouds.min.js"></script>
+<script>
+VANTA.CLOUDS({
+  el: "#your-element-selector",
+  mouseControls: true,
+  touchControls: true,
+  gyroControls: false,
+  minHeight: 200.00,
+  minWidth: 200.00
+})
+</script>
