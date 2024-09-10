@@ -4,7 +4,6 @@ title: About
 permalink: /about/
 comments: true
 ---
-
 <style>
     .grid-container {
         display: grid;
@@ -28,6 +27,7 @@ comments: true
         white-space: pre-line;
     }
 
+    /* Smooth animation of the scroller */
     .slider {
         box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.125);
         height: 200px;
@@ -58,33 +58,89 @@ comments: true
         top: 0;
     }
 
+    /* Image Track Animation */
     .slider .slide-track {
         display: flex;
         animation: scroll 60s linear infinite;
     }
 
+    /* Each Slide */
     .slider .slide {
         flex: 0 0 auto;
         width: auto;
         height: 200px;
         padding-left: 10px;
         padding-right: 10px;
+        position: relative;
+        overflow: hidden;
     }
 
-    .slide img {
+    /* Image within slide */
+    .slider .slide img {
         width: 100%;
         height: 100%;
         object-fit: cover;
         border-radius: 5px;
+        transition: transform 0.3s ease, filter 0.3s ease;
+        z-index: 1;
+        position: relative;
     }
 
+    /* Hover effect: Image blurs */
+    .slider .slide:hover img {
+        filter: blur(5px);
+    }
+
+    /* Text Box that appears on hover */
+    .slider .slide .hover-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        backdrop-filter: blur(5px);
+        background-color: rgba(255, 255, 255, 0.5);
+        border: 2px solid #000;
+        padding: 10px 20px;
+        font-size: 18px;
+        font-weight: bold;
+        color: #000 !important;
+        border-radius: 5px;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: 2;
+        text-align: center;
+    }
+
+    .slider a {
+        color: black !important;
+    }
+
+    /* Show text on hover */
+    .slider .slide:hover .hover-text {
+        opacity: 1;
+    }
+
+    /* Adding hover pause for slider */
     @keyframes scroll {
         0% {
             transform: translateX(0);
         }
+
         100% {
             transform: translateX(calc(-250px * 28));
         }
+    }
+
+    /* Pauses the slider on hover */
+    .slider:hover .slide-track {
+        animation-play-state: paused;
+    }
+
+    /* Style for the anchor within hover text */
+    .hover-text a {
+        color: #000;
+        text-decoration: none;
+        font-weight: bold;
     }
 </style>
 
@@ -119,9 +175,10 @@ My interests include:
 </div>
 
 ## Image Collages
-![hing](../images/photography/fish.jpg)
+
 ![Personal image collage](https://github.com/user-attachments/assets/27502a63-0d74-4c24-b42f-d2ad0eca57be)
 
+<!-- SCRIPT -->
 <script>
     var container = document.getElementById("grid_container");
     var http_source = "https://upload.wikimedia.org/wikipedia/commons/";
@@ -209,42 +266,63 @@ My interests include:
     updateGridItems();
     setInterval(updateGridItems, 1000);
 
-    // Array of image URLs
+    // Array of image URLs and their respective links
     const images = [
-        "../images/photography/car.jpg",
-        "../images/photography/wall.jpg",
-        "../images/photography/fish.jpg",
-        "../images/photography/temple.jpg",
-        "../images/photography/library.jpg",
-        "../images/photography/pier.jpg",
-        "../images/photography/mountains.jpg",
-        "../images/photography/beach.jpg",
-        "../images/photography/coronado1.jpg",
-        "../images/photography/blackandwhite.jpg",
-        "../images/photography/sunset.jpg",
-        "../images/photography/building.jpg",
-        "../images/photography/coronado2.jpg",
-        "../images/photography/lily.jpg",
-        // Add more URLs as needed
+        { src: "/studentCSA/images/photography/car.jpg", link: "https://www.pixelpotpourri.com/Galleries/All-Work/i-mF7B22J" },
+        { src: "/studentCSA/images/photography/wall.jpg", link: "https://www.pixelpotpourri.com/Galleries/All-Work/i-vfnH97m" },
+        { src: "/studentCSA/images/photography/fish.jpg", link: "https://www.pixelpotpourri.com/Galleries/All-Work/i-t4JLKM6" },
+        { src: "../images/photography/temple.jpg", link: "https://www.pixelpotpourri.com/Galleries/All-Work/i-MjpgKbX" },
+        { src: "../images/photography/library.jpg", link: "https://www.pixelpotpourri.com/Galleries/All-Work/i-3qRCPFq" },
+        { src: "../images/photography/pier.jpg", link: "https://www.pixelpotpourri.com/Galleries/All-Work/i-cNg27wP" },
+        { src: "../images/photography/mountains.jpg", link: "https://www.pixelpotpourri.com/Galleries/All-Work/i-vr5ZvBn" },
+        { src: "../images/photography/beach.jpg", link: "https://www.pixelpotpourri.com/Galleries/All-Work/i-b8TGzNW" },
+        { src: "../images/photography/coronado1.jpg", link: "https://www.pixelpotpourri.com/Galleries/All-Work/i-6nvkvPM" },
+        { src: "../images/photography/blackandwhite.jpg", link: "https://www.pixelpotpourri.com/Galleries/All-Work/i-Ptfv836" },
+        { src: "../images/photography/sunset.jpg", link: "https://www.pixelpotpourri.com/Galleries/All-Work/i-mRBK5wf" },
+        { src: "../images/photography/building.jpg", link: "https://www.pixelpotpourri.com/Galleries/All-Work/i-rqfZ9wv" },
+        { src: "../images/photography/coronado2.jpg", link: "https://www.pixelpotpourri.com/Galleries/All-Work/i-mtSg4rR" },
+        { src: "../images/photography/lily.jpg", link: "https://www.pixelpotpourri.com/Galleries/All-Work/i-PKGZ3ng" }
+        // Add more images and links here
     ];
 
-    // Function to create image elements
-    function createImage(src) {
+    // Function to create an image element with a link
+    function createImage(src, link) {
+        const a = document.createElement('a');
+        a.href = link;
+        a.target = "_blank"; // Opens link in new tab
+
         const img = document.createElement('img');
         img.src = src;
         img.height = 200;
         img.style.objectFit = 'cover';
         img.style.borderRadius = '5px';
-        return img;
+
+        a.appendChild(img);
+        return a;
     }
 
     // Function to add images to the track
     function addImages() {
         const track = document.getElementById('slide-track');
-        images.forEach(src => {
+        images.forEach(item => {
             const slideDiv = document.createElement('div');
             slideDiv.className = 'slide';
-            slideDiv.appendChild(createImage(src));
+
+            const imgElement = createImage(item.src, item.link);
+            slideDiv.appendChild(imgElement);
+
+            // Add the hover text box with a link
+            const hoverText = document.createElement('div');
+            hoverText.className = 'hover-text';
+
+            const hoverLink = document.createElement('a');
+            hoverLink.href = item.link;
+            hoverLink.target = "_blank"; // Open link in a new tab
+            hoverLink.textContent = 'Open';
+
+            hoverText.appendChild(hoverLink);
+            slideDiv.appendChild(hoverText);
+
             track.appendChild(slideDiv);
         });
     }
