@@ -175,6 +175,8 @@ My interests include:
 
 ## 📷 [Photography](https://www.pixelpotpourri.com/)
 
+I have been doing photography for around 6 years (I forget haha: it's been so long). Here are some images from my photography site. You can click an image to see more info. Most of these images are from places within California!
+
 <div class="slider">
     <div class="slide-track" id="slide-track">
         <!-- Images will be appended here via JavaScript -->
@@ -182,6 +184,8 @@ My interests include:
 </div>
 
 ## Image Collages
+
+Here is a personal image collage of 
 
 ![Personal image collage](https://github.com/user-attachments/assets/27502a63-0d74-4c24-b42f-d2ad0eca57be)
 
