@@ -157,14 +157,21 @@ My interests include:
 - 💻 Computers
   - Programming
     - Python, C, Arduino, hardware design and electrical engineering
+      - I usually use Python for high level projects like Artificial Intelligence
+      - I usually use C for projects where I need to control hardware (ex: using Arduinos)
   - Cybersecurity
+    - I am in CyberAegis and do Windows
 - 🎹 Piano
+  - I have been playing for around 1.5 years
 - 🏄 Surfing
+  - I usually go to Pacific Beach but Torrey Pines has nice waves too
   - [Torrey Pines Forecast](https://www.surfline.com/surf-report/torrey-pines-state-beach/584204204e65fad6a7709994?camId=5fc81527bceda049ecf8ac63)
   - [Torrey Pines Forecast Alternative](https://www.surf-forecast.com/breaks/Torrey-Pines-State-Beach/forecasts/latest#)
   - [Beaufort Wind Scale](https://www.spc.noaa.gov/faq/tornado/beaufort.html)
   - [Forecast Guide](https://www.lapointcamps.com/blog/how-to-read-surf-forecast/)
 - 🏂 Snowboarding
+  - My favorite place to Snowboard is BigBear since it is close
+  - I also like to go to Mammoth if I have time
 
 ## 📷 [Photography](https://www.pixelpotpourri.com/)
 
