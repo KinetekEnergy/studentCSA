@@ -71,12 +71,14 @@ table th{
     background-color: $overlay;
     border-color: $overlay-light;
     color: $high-emph;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
 }
 
 table td{
     background-color: $dark-grey;
     border-color: $overlay-light;
     color: $med-emph;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
 }
 
 .flash {
