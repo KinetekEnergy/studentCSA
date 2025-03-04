@@ -52,6 +52,9 @@ jobs:
           bundle exec jekyll build  # Build your Jekyll site
       - name: Upload artifact
         uses: actions/upload-artifact@v4
+        with:
+          name: artifact
+          path: _site
 
   # Deployment job
   deploy:
