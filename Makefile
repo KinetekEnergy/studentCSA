@@ -64,10 +64,9 @@ server: stop convert
 convert: $(MARKDOWN_FILES)
 
 # Convert .ipynb files to Markdown with front matter, preserving directory structure
-$(DESTINATION_DIRECTORY)/%.md: _notebooks/%.ipynb
-	@echo "Converting source $< to destination $@"
+$(DESTINATION_DIRECTORY)/%_IPYNB_2_.md: _notebooks/%.ipynb
 	@mkdir -p $(@D)
-	@python3 -c 'import sys; from scripts.convert_notebooks import convert_single_notebook; convert_single_notebook(sys.argv[1])' "$<"
+	@python3 -c "from scripts.convert_notebooks import convert_notebooks; convert_notebooks()"
 
 # Clean up project derived files, to avoid run issues stop is dependency
 clean: stop
@@ -93,3 +92,14 @@ stop:
 	@@ps aux | awk -v log_file=$(LOG_FILE) '$$0 ~ "tail -f " log_file { print $$2 }' | xargs kill >/dev/null 2>&1 || true
 	@# removes log
 	@rm -f $(LOG_FILE)
+
+# stops the server and reloads it
+reload:
+	@make stop
+	@make
+
+# stops server, cleans it, reloads it
+refresh:
+	@make stop
+	@make clean
+	@make
